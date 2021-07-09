@@ -1,6 +1,19 @@
 # Some Datasets download scripts
 
-> Last update: 02/07/2021.
+> Last update: 09/07/2021.
+
+Install datasets to the folder `data/`
+
+## Preparation
+
+```shell
+python3 venv env
+pip install -r requirements.txt
+```
+
+## Usage
+
+//TODO
 
 ## Template
 
@@ -48,7 +61,7 @@ tar -xvzf 102flowers.tgz
 wget https://www.robots.ox.ac.uk/%7Evgg/data/flowers/102/102segmentations.tgz
 tar -xvzf 102segmentations.tgz
 # Chi distances
-wget https://www.robots.ox.ac.uk/%7Evgg/data/flowers/102/distancematrices102.mat
+# wget https://www.robots.ox.ac.uk/%7Evgg/data/flowers/102/distancematrices102.mat
 # Image labels
 wget https://www.robots.ox.ac.uk/%7Evgg/data/flowers/102/imagelabels.mat
 # Data splits
@@ -322,4 +335,31 @@ cd ..
 Citation:
 
 ```text
+```
+
+## CIFAR-10-C, CIFAR-100-C
+
+Website: https://github.com/hendrycks/robustness
+
+Paper: https://arxiv.org/abs/1903.12261
+
+Script:
+
+```shell
+wget https://zenodo.org/record/2535967/files/CIFAR-10-C.tar?download=1
+tar -xvzf CIFAR-10-C.tar 
+wget https://zenodo.org/record/3555552/files/CIFAR-100-C.tar?download=1
+tar -xvzf CIFAR-100-C.tar
+cd ..
+```
+
+Citation:
+
+```text
+@article{hendrycks2019robustness,
+  title={Benchmarking Neural Network Robustness to Common Corruptions and Perturbations},
+  author={Dan Hendrycks and Thomas Dietterich},
+  journal={Proceedings of the International Conference on Learning Representations},
+  year={2019}
+}
 ```
