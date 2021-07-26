@@ -1,6 +1,9 @@
-folder_name=102flowers
+# flowers.sh (OBLIGATORY)
+folder_name="102flowers"
+datasets_root="datasets/"
+cd $datasets_root
 mkdir $folder_name 
-cd $folder_name
+cd $folder_namee
 # Images
 wget https://www.robots.ox.ac.uk/%7Evgg/data/flowers/102/102flowers.tgz
 tar -xvzf 102flowers.tgz
@@ -8,7 +11,7 @@ tar -xvzf 102flowers.tgz
 wget https://www.robots.ox.ac.uk/%7Evgg/data/flowers/102/102segmentations.tgz
 tar -xvzf 102segmentations.tgz
 # Chi distances
-wget https://www.robots.ox.ac.uk/%7Evgg/data/flowers/102/distancematrices102.mat
+# wget https://www.robots.ox.ac.uk/%7Evgg/data/flowers/102/distancematrices102.mat
 # Image labels
 wget https://www.robots.ox.ac.uk/%7Evgg/data/flowers/102/imagelabels.mat
 # Data splits

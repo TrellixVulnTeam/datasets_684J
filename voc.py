@@ -171,10 +171,6 @@ def download_extract(url, root, filename, md5, *args, **kwargs):
         tar.extractall(path=root)
 
 
-def get_root(dataset_metadata):
-    return "data/" + dataset_metadata["base_dir"]
-
-
 if __name__ == "__main__":
     ds = DATASET_YEAR_DICT["2012"]
-    download_extract(root=get_root(ds), **ds)
+    download_extract(root="data", **ds)

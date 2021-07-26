@@ -2,11 +2,12 @@
 
 > Last update: 09/07/2021.
 
-Install datasets to the folder `data/`
+Install datasets to the folder `datasets/`
 
 ## Preparation
 
 ```shell
+mkdir datasets
 python3 venv env
 pip install -r requirements.txt
 ```
@@ -24,7 +25,10 @@ Paper:
 Script:
 
 ```shell
+# filename.sh [GENERATE SCRIPT TAG]
 folder_name=
+datasets_root="datasets/"
+cd $datasets_root
 mkdir $folder_name 
 cd $folder_name
 
@@ -36,24 +40,25 @@ Citation:
 ```text
 ```
 
-## Flower
+## Flowers
 
 102 Category Flower Dataset.
 
-> We have created a 102 category dataset, consisting of 102 flower categories. The flowers chosen to be flower commonly occuring in the United Kingdom. Each class consists of between 40 and 258 images. 
-
+> We have created a 102 category dataset, consisting of 102 flower categories. The flowers chosen to be flower commonly occuring in the United Kingdom. Each class consists of between 40 and 258 images.
 
 Website: https://www.robots.ox.ac.uk/%7Evgg/data/flowers/102/
 
-Paper: 
+Paper:
 
 Script:
 
 ```shell
-# flowers.sh
-folder_name=102flowers
+# flowers.sh (OBLIGATORY)
+folder_name="102flowers"
+datasets_root="datasets/"
+cd $datasets_root
 mkdir $folder_name 
-cd $folder_name
+cd $folder_namee
 # Images
 wget https://www.robots.ox.ac.uk/%7Evgg/data/flowers/102/102flowers.tgz
 tar -xvzf 102flowers.tgz
@@ -67,7 +72,6 @@ wget https://www.robots.ox.ac.uk/%7Evgg/data/flowers/102/imagelabels.mat
 # Data splits
 wget https://www.robots.ox.ac.uk/%7Evgg/data/flowers/102/setid.mat
 cd ..
-
 ```
 
 Citation:
@@ -77,7 +81,7 @@ Citation:
 
 ## Scenes
 
-### MIT Indoors scenes
+### MIT Indoor scenes
 
 Indoor Scene Recognition.
 
@@ -92,7 +96,10 @@ Paper: https://people.csail.mit.edu/torralba/publications/indoor.pdf
 Script:
 
 ```shell
-folder_name=indoorCVPR_09
+# indoor.sh
+folder_name="indoorCVPR_09"
+datasets_root="datasets/"
+cd $datasets_root
 mkdir $folder_name 
 cd $folder_name
 # Images
@@ -120,9 +127,12 @@ Website: http://www.vision.caltech.edu/visipedia/CUB-200.html
 Script:
 
 ```shell
+# cub200.sh
 folder_name=CUB200
+datasets_root="datasets/"
+cd $datasets_root
 mkdir $folder_name 
-cd $folder_name
+cd $folder_nam
 # Images
 wget http://www.vision.caltech.edu/visipedia-data/CUB-200/images.tgz
 tar -xvzf images.tgz
@@ -163,7 +173,10 @@ Paper: http://vision.stanford.edu/pdf/3drr13.pdf
 Script:
 
 ```shell
+# cars.sh
 folder_name=cars
+datasets_root="datasets/"
+cd $datasets_root
 mkdir $folder_name 
 cd $folder_name
 # Training images
@@ -175,6 +188,7 @@ tar -xvzf cars_test.tgz
 # Annotations
 wget http://ai.stanford.edu/~jkrause/cars/car_devkit.tgz
 tar -xvzf car_devkit.tgz
+cd ..
 ```
 
 Citation
@@ -189,7 +203,6 @@ Citation
 }
 ```
 
-
 ## Aircraft
 
 Fine-Grained Visual Classification of Aircraft (FGVC-Aircraft)
@@ -203,7 +216,10 @@ Paper: https://arxiv.org/pdf/1306.5151.pdf
 Script:
 
 ```shell
+# aircraft.sh
 folder_name=aircraft
+datasets_root="datasets/"
+cd $datasets_root
 mkdir $folder_name 
 cd $folder_name
 wget https://www.robots.ox.ac.uk/~vgg/data/fgvc-aircraft/archives/fgvc-aircraft-2013b.tar.gz
@@ -245,9 +261,16 @@ Paper: https://link.springer.com/content/pdf/10.1007/s11263-009-0275-4.pdf
 Script:
 
 ```shell
+# voc2012.sh
 folder_name=VOC2012
+datasets_root="datasets/"
+cd $datasets_root
 mkdir $folder_name 
 cd $folder_name
+wget https://www.robots.ox.ac.uk/~vgg/data/fgvc-aircraft/archives/fgvc-aircraft-2013b.tar.gz
+tar -xvzf fgvc-aircraft-2013b.tar.gz
+cd ..
+
 # Images
 wget http://host.robots.ox.ac.uk:8080/pascal/VOC/voc2012/VOCtrainval_11-May-2012.tar
 tar -xvzf VOCtrainval_11-May-2012.tar
@@ -275,7 +298,10 @@ Paper: http://www.audentia-gestion.fr/MICROSOFT/pubs-deCampos09.pdf
 Script:
 
 ```shell
+# chars74k.sh
 folder_name=Chars74K
+datasets_root="datasets/"
+cd $datasets_root
 mkdir $folder_name 
 cd $folder_name
 # Data
@@ -299,8 +325,12 @@ Citation:
 ## SVHN
 
 ```shell
-mkdir SVHN
-cd SVHN
+# svhn.sh
+folder_name="SVHN"
+datasets_root="datasets/"
+cd $datasets_root
+mkdir $folder_name 
+cd $folder_name
 # Cropped
 wget http://ufldl.stanford.edu/housenumbers/train_32x32.mat
 wget http://ufldl.stanford.edu/housenumbers/test_32x32.mat
@@ -313,7 +343,7 @@ wget http://ufldl.stanford.edu/housenumbers/test.tar.gz
 tar -xvzf test.tar.gz
 wget http://ufldl.stanford.edu/housenumbers/extra.tar.gz
 tar -xvzf extra.tar.gz
-    cd ..
+cd ..
 ```
 
 ## TinyImageNet
@@ -325,6 +355,7 @@ Paper:
 Script:
 
 ```shell
+# tinyimagenet.sh
 folder_name=
 mkdir $folder_name 
 cd $folder_name
@@ -346,6 +377,9 @@ Paper: https://arxiv.org/abs/1903.12261
 Script:
 
 ```shell
+# cifar-c.sh
+datasets_root="datasets/"
+cd $datasets_root
 wget https://zenodo.org/record/2535967/files/CIFAR-10-C.tar?download=1
 tar -xvzf CIFAR-10-C.tar 
 wget https://zenodo.org/record/3555552/files/CIFAR-100-C.tar?download=1
