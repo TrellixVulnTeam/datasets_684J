@@ -1,16 +1,18 @@
 import argparse
 import re
+import os
+
+DESTINATION_FOLDER = "scripts"
 
 
 def generate_all(text):
     arr = re.findall(r"[a-zA-Z0-9\-_ ]+\.sh", text, re.MULTILINE)
     for filename in arr:
-        print(filename)
-        block = generate_one(text, filename)
+        block = generate_one(text, filename, DESTINATION_FOLDER)
         print(block)
 
 
-def generate_one(text, filename):
+def generate_one(text, filename, destination_folder):
     # find block
     s = text.find(f"# {filename.strip()}")
     if s == -1:
@@ -21,14 +23,14 @@ def generate_one(text, filename):
 
     # write to file
     filename = re.sub(r"[^\w]", "", block.split("\n")[0].split(".")[0])
-    with open(f"{filename}.sh", "w+") as f:
+    with open(os.path.join(destination_folder, f"{filename}.sh"), "w+") as f:
         f.write(block)
     f.close()
 
     return block
 
 
-def main(filename: str):
+def main(filename: str, destination_folder: str):
     # open readme file
     with open("README.md", "r") as f:
         text = f.read()
@@ -38,7 +40,7 @@ def main(filename: str):
     if filename == "all":
         generate_all(text)
     else:
-        generate_one(text, filename)
+        generate_one(text, filename, destination_folder)
 
 
 if __name__ == "__main__":
@@ -46,8 +48,10 @@ if __name__ == "__main__":
         description="Parse README file to download scripts."
     )
     parser.add_argument("-f", "--filename", type=str, default="all")
+    parser.add_argument("-d", "--destination-folder", type=str, default="scripts")
 
     args = parser.parse_args()
     filename = args.filename
+    destination_folder = args.destination_folder
 
-    main(filename)
+    main(filename, destination_folder)

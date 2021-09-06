@@ -8,7 +8,7 @@ Install datasets to the folder `datasets/`
 
 ```shell
 mkdir datasets
-python3 venv env
+python -m venv env --system-site-packages
 pip install -r requirements.txt
 ```
 
@@ -39,6 +39,8 @@ Citation:
 
 ```text
 ```
+
+---
 
 ## Flowers
 
@@ -246,11 +248,11 @@ Citation
 Visual Object Classes Challenge 2012 (VOC2012)
 
 > Classification/Detection: The 2012 dataset is the same as that used in 2011. No additional data has been annotated. For this reason, participants are not allowed to run evaluation on the VOC2011 dataset, and this option on the evaluation server has been disabled.
-> 
+ 
 > Segmentation: The 2012 dataset contains images from 2008-2011 for which additional segmentations have been prepared. As in previous years the assignment to training/test sets has been maintained. The total number of images with segmentation has been increased from 7,062 to 9,993.
-> 
+
 > Action Classification: The 2012 dataset comprises the 2011 dataset plus additional annotated images. The assignment to training/test sets has been maintained. In addition to the box annotation, people are now also annotated with a reference point on the body to support the "boxless" action classification task (see the development kit).
-> 
+
 > Person Layout Taster: The 2012 dataset is the same as that used in 2011. No additional data has been annotated. For this reason, participants are not allowed to run evaluation on the VOC2011 dataset, and this option on the evaluation server has been disabled.
 
 
@@ -285,6 +287,42 @@ Citation:
 	title = "The {PASCAL} {V}isual {O}bject {C}lasses {C}hallenge 2012 {(VOC2012)} {R}esults",
 	howpublished = "http://www.pascal-network.org/challenges/VOC/voc2012/workshop/index.html"
 }	
+```
+
+## COCO
+
+Website:
+
+Paper:
+
+Script:
+
+```shell
+# coco.sh
+folder_name="coco/"
+datasets_root="datasets/"
+cd $datasets_root
+mkdir $folder_name
+cd $folder_name
+
+wget http://images.cocodataset.org/zips/val2017.zip
+wget http://images.cocodataset.org/zips/test2017.zip
+wget http://images.cocodataset.org/annotations/annotations_trainval2017.zip
+# wget http://images.cocodataset.org/annotations/stuff_annotations_trainval2017.zip
+wget http://images.cocodataset.org/annotations/image_info_test2017.zip
+unzip val2017.zip
+unzip test2017.zip
+unzip annotations_trainval2017.zip
+unzip image_info_test2017.zip
+rm val2017.zip
+rm test2017.zip
+
+cd ..
+```
+
+Citation:
+
+```text
 ```
 
 ## Letters
@@ -368,6 +406,68 @@ Citation:
 ```text
 ```
 
+## Icons-50
+
+https://berkeley.box.com/s/jcem6ik7rxr6594lg99kmrdo01ue6yjt
+or
+https://drive.google.com/drive/folders/16_kaFo3uUoS-U8FTDm4nUh6Vo21UVnJX?usp=sharing
+
+
+## Describable Textures Dataset (DTD) (Texture)
+
+Website: https://www.robots.ox.ac.uk/~vgg/data/dtd/
+
+```shell
+# textures.sh
+folder_name=Textures
+mkdir $folder_name 
+cd $folder_name
+https://www.robots.ox.ac.uk/~vgg/data/dtd/download/dtd-r1.0.1.tar.gz
+https://www.robots.ox.ac.uk/~vgg/data/dtd/download/dtd-r1.0.1-labels.tar.gz
+tar -xvzf dtd-r1.0.1.tar.gz
+tar -xvzf dtd-r1.0.1-labels.tar.gz
+cd ..
+```
+
+
+Citation: 
+
+```text
+@InProceedings{cimpoi14describing,
+  Author    = {M. Cimpoi and S. Maji and I. Kokkinos and S. Mohamed and and A. Vedaldi},
+  Title     = {Describing Textures in the Wild},
+  Booktitle = {Proceedings of the {IEEE} Conf. on Computer Vision and Pattern Recognition ({CVPR})},
+  Year      = {2014}
+}
+```
+
+## Places 365
+
+Website: http://places2.csail.mit.edu/download.html
+
+High resolution: 
+
+Small Images:
+
+val: http://data.csail.mit.edu/places/places365/val_256.tar
+test: http://data.csail.mit.edu/places/places365/test_256.tar
+
+```shell
+# places365.sh
+folder_name=Places365
+mkdir $folder_name 
+cd $folder_name
+wget http://data.csail.mit.edu/places/places365/val_256.tar
+tar -xvf val_256.tar
+cd ..
+```
+
+## Genomics
+
+Website: https://ai.googleblog.com/2019/12/improving-out-of-distribution-detection.html
+
+The real bacteria dataset with 10 in-distribtution classes, 60 validation out-of-distribution (OOD) classes, and 60 test OOD classes can be downloaded at https://drive.google.com/corp/drive/folders/1Ht9xmzyYPbDouUTl_KQdLTJQYX2CuclR
+
 ## CIFAR-10-C, CIFAR-100-C
 
 Website: https://github.com/hendrycks/robustness
@@ -396,4 +496,105 @@ Citation:
   journal={Proceedings of the International Conference on Learning Representations},
   year={2019}
 }
+```
+
+## Fishyscapes
+
+Fishyscapes is a benchmark for anomaly detection in semantic segmentation.
+
+Website: https://fishyscapes.com/
+
+https://github.com/hermannsblum/bdl-benchmark/tree/master/bdlb/fishyscapes
+
+https://github.com/OATML/bdl-benchmarks
+
+Paper: https://arxiv.org/abs/1903.12261
+
+### Lost & Found
+
+Script:
+
+```shell
+'lostandfound_mask': 'http://robotics.ethz.ch/~asl-datasets/Fishyscapes/fishyscapes_lostandfound.zip',
+'cityscapes_overlays_v3': 'http://robotics.ethz.ch/~asl-datasets/Fishyscapes/fs_val_v3.zip',
+```
+
+```shell
+# All links
+http://www.dhbw-stuttgart.de/~sgehrig/lostAndFoundDataset/disparity.zip 1461824611 1e06350d082f3bd686ff889940ad60ed85bfb1e8aa691a547a259c52fa3b60b1
+http://www.dhbw-stuttgart.de/~sgehrig/lostAndFoundDataset/gtCoarse.zip 37756896 53b6d3ab000f08b1fb59d70c1398eecc4d82a7baf4e9cf74fbf60d1858abe9ac
+http://www.dhbw-stuttgart.de/~sgehrig/lostAndFoundDataset/leftImg16bit.zip 18039875634 f3530514163f30ccafc05210b643ea690c4ba17cdb4497d8a7d4f9c324c71da8
+http://www.dhbw-stuttgart.de/~sgehrig/lostAndFoundDataset/leftImg8bit.zip 5802953400 307f66002023ab597d309963b94990f5b9a8e5735ee729c3292647a66e9f2b18
+http://www.dhbw-stuttgart.de/~sgehrig/lostAndFoundDataset/rightImg16bit.zip 17938768019 db492fc9b9e0adf7a662cd589a6c8ea5cd8cf68d08600b2099d0cd7e0c58f6dd
+http://www.dhbw-stuttgart.de/~sgehrig/lostAndFoundDataset/rightImg8bit.zip 5787134165 d5219f49e730a1ce064a9d118227e71cd39681bcc7f8a87ab4061c86cd7dc6fb
+```
+
+```shell
+# fslostandfound.sh
+folder_name="lostandfound/"
+datasets_root="datasets/"
+cd $datasets_root
+mkdir $folder_name 
+cd $folder_name
+# images
+wget http://www.dhbw-stuttgart.de/~sgehrig/lostAndFoundDataset/leftImg8bit.zip
+# masks
+wget http://robotics.ethz.ch/~asl-datasets/Fishyscapes/fishyscapes_lostandfound
+cd ..
+```
+
+### Static
+
+```shell
+# fsstatic.sh
+datasets_root="datasets/"
+cd $datasets_root
+# masks and images (npz)
+wget http://robotics.ethz.ch/~asl-datasets/Fishyscapes/fs_val_v3.zip
+cd ..
+```
+
+Citation:
+
+```text
+@inproceedings{pinggera2016lost,
+  title={Lost and found: detecting small road hazards for self-driving vehicles},
+  author={Pinggera, Peter and Ramos, Sebastian and Gehrig, Stefan and Franke, Uwe and Rother, Carsten and Mester, Rudolf},
+  booktitle={2016 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)},
+  year={2016}
+}
+@article{blum2019fishyscapes,
+  title={The Fishyscapes Benchmark: Measuring Blind Spots in Semantic Segmentation},
+  author={Blum, Hermann and Sarlin, Paul-Edouard and Nieto, Juan and Siegwart, Roland and Cadena, Cesar},
+  journal={arXiv preprint arXiv:1904.03215},
+  year={2019}
+}
+```
+
+
+## Cityscapes
+
+Website: https://www.cityscapes-dataset.com/
+
+https://www.cityscapes-dataset.com/downloads/
+
+Paper:
+
+Script:
+
+```shell
+# cityscapes.sh
+folder_name="cityscapes"
+datasets_root="datasets/"
+cd $datasets_root
+mkdir $folder_name 
+cd $folder_name
+# Left 8-bit images
+wget https://www.cityscapes-dataset.com/file-handling/?packageID=3
+cd ..
+```
+
+Citation:
+
+```text
 ```
