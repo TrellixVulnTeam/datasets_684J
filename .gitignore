@@ -1,7 +1,5 @@
-*
-!.gitignore
-!*.sh
-!*.py
-!*.md
-!requirements.txt
+env/
+datasets/*
+scripts/*
+*.zip
 !.gitkeep
