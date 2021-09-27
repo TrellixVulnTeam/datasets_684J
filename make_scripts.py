@@ -2,13 +2,11 @@ import argparse
 import re
 import os
 
-DESTINATION_FOLDER = "scripts"
 
-
-def generate_all(text):
+def generate_all(text, destination_folder):
     arr = re.findall(r"[a-zA-Z0-9\-_ ]+\.sh", text, re.MULTILINE)
     for filename in arr:
-        block = generate_one(text, filename, DESTINATION_FOLDER)
+        block = generate_one(text, filename, destination_folder)
         print(block)
 
 
@@ -38,7 +36,7 @@ def main(filename: str, destination_folder: str):
 
     # find the block script
     if filename == "all":
-        generate_all(text)
+        generate_all(text, destination_folder)
     else:
         generate_one(text, filename, destination_folder)
 
